@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi To-Do List Modern</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Link ke file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>Daftar Tugas</h1>
+            <p id="date-display"></p>
+        </header>
+
+        <form id="add-task-form">
+            <input type="text" id="new-task-input" placeholder="e.g., Selesaikan proyek..." required autocomplete="off">
+            <button type="submit" aria-label="Tambah tugas baru">
+                <i class="fas fa-plus"></i> Tambah
+            </button>
+        </form>
+
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="active">Aktif</button>
+            <button class="filter-btn" data-filter="completed">Selesai</button>
+        </div>
+
+        <div class="task-list-container">
+            <div id="loading-indicator">
+                <i class="fas fa-spinner fa-spin"></i> Memuat tugas...
+            </div>
+            <ul id="task-list">
+                <!-- Tugas akan dimuat di sini oleh JavaScript -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal untuk Edit Tugas (awalnya tersembunyi) -->
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Edit Tugas</h2>
+            <form id="edit-task-form">
+                <input type="hidden" id="edit-task-id">
+                <input type="text" id="edit-task-input" required autocomplete="off">
+                <div class="modal-actions">
+                    <button type="button" id="cancel-edit-btn">Batal</button>
+                    <button type="submit">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Link ke file JavaScript (defer agar dieksekusi setelah HTML selesai di-parse) -->
+    <script src="script.js" defer></script>
+</body>
+</html>
